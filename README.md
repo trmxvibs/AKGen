@@ -7,15 +7,17 @@ AKGen is an open-source tool that allows users to generate a custom keylogger AP
 ## Features
 - **Customizable Keylogger:** Generate a keylogger APK with your own settings.
 - **Local or Remote Logging:** Save keystrokes locally or send them to a remote server.
-
+- **Tested on Kali Linux:** Fully compatible with Kali Linux.
 
 ---
 
 ## Prerequisites
 Before using AKGen, ensure you have the following installed:
-1. **Python 3** (Download from [python.org](https://www.python.org/))
+1. **Python 3** (Pre-installed on Kali Linux)
 2. **Android SDK** (Download from [developer.android.com](https://developer.android.com/studio))
-3. **Git** (Download from [git-scm.com](https://git-scm.com/))
+3. **Gradle** (Install using `sudo apt install gradle`)
+4. **Git** (Install using `sudo apt install git`)
+
 
 ---
 
@@ -29,9 +31,19 @@ cd AKGen
  ```bash
 pip install argparse subprocess os shutil
 ```
-3. Ensure you have the Android SDK installed and configured.
 
- # How to Use
+3. Set up Android SDK and Gradle:
+
+Download and install Android SDK.
+
+Set environment variables:
+```bash
+export ANDROID_HOME=/path/to/android-sdk
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+```
+---
+
+# How to Use
 Step 1: Generate the APK
 Run the following command to generate the keylogger APK:
 ```bash
@@ -43,7 +55,7 @@ python akgen.py -o output.apk -s http://yourserver.com
 
 
 # Step 2: Install the APK
-Transfer the generated APK (output.apk) to your Android device.
+Transfer the generated APK (`output.apk`) to your Android device.
 
 Install the APK on your device.
 
@@ -53,8 +65,8 @@ Open the app on your Android device.
 Click the "Enable Keylogger" button.
 
 Grant the necessary permissions (Accessibility Services).
-
-Customization
+---
+# Customization
 You can customize the keylogger APK as per your requirements:
 
 1. Change Server URL
@@ -87,11 +99,6 @@ The app uses Android's Accessibility Services to capture keystrokes.
 
 Captured keystrokes are either saved locally or sent to a remote server.
 
-Ethical Use:
-
-The app is designed for educational purposes only.
-
-It requires explicit user consent to enable keylogging.
 
 
 
@@ -102,7 +109,7 @@ This project is licensed under the MIT License. See the LICENSE file for details
 Contributions are welcome! If you have any suggestions or improvements, feel free to open an issue or submit a pull request.
 
 # Disclaimer
-This tool is for educational purposes only. The developers are not responsible for any misuse of this tool. Use it at your own risk.
+The developers are not responsible for any misuse of this tool. Use it at your own risk.
 
 
 
