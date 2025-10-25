@@ -4,47 +4,76 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <!-- App Title -->
+    <!-- Title -->
     <TextView
         android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ethical Keylogger"
-        android:textSize="24sp"
+        android:text="Demo In-App Key Logger (Educational)"
+        android:textSize="20sp"
         android:textStyle="bold"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp" />
+        android:layout_centerHorizontal="true"/>
 
-    <!-- Description -->
+    <!-- Short description -->
     <TextView
-        android:id="@+id/descriptionTextView"
+        android:id="@+id/descTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="This app logs keystrokes for educational purposes only."
-        android:textSize="16sp"
+        android:text="This logs only text typed into the input below (inside this app)."
+        android:textSize="14sp"
         android:layout_below="@id/titleTextView"
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginTop="8dp"
+        android:layout_centerHorizontal="true"/>
 
-    <!-- Enable Keylogger Button -->
+    <!-- Input field where user types -->
+    <EditText
+        android:id="@+id/inputEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Type here (only logged inside this app)"
+        android:layout_below="@id/descTextView"
+        android:layout_marginTop="16dp"
+        android:imeOptions="actionDone"
+        android:inputType="text"/>
+
+    <!-- Submit button (optional) -->
     <Button
-        android:id="@+id/enableButton"
+        android:id="@+id/submitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enable Keylogger"
-        android:layout_below="@id/descriptionTextView"
-        android:layout_marginTop="40dp"
-        android:layout_centerHorizontal="true" />
+        android:text="Submit (log current text)"
+        android:layout_below="@id/inputEditText"
+        android:layout_marginTop="12dp"
+        android:layout_alignParentStart="true" />
 
-    <!-- Status Text -->
-    <TextView
-        android:id="@+id/statusTextView"
+    <!-- Clear logs button -->
+    <Button
+        android:id="@+id/clearButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Keylogger is disabled"
-        android:textSize="18sp"
-        android:layout_below="@id/enableButton"
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true" />
+        android:text="Clear Logs"
+        android:layout_below="@id/inputEditText"
+        android:layout_marginTop="12dp"
+        android:layout_toEndOf="@id/submitButton"
+        android:layout_marginStart="12dp" />
+
+    <!-- Scrollable area to show logs -->
+    <ScrollView
+        android:id="@+id/logScroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@id/submitButton"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="16dp"
+        android:fillViewport="true">
+
+        <TextView
+            android:id="@+id/logTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Logs will appear here..."
+            android:textSize="14sp"
+            android:padding="8dp" />
+    </ScrollView>
 
 </RelativeLayout>
